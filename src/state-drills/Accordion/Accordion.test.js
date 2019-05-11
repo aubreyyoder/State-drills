@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import renderer from "react-test-renderer";
+import { shallow } from "enzyme";
+import toJson from "enzyme-to-json";
 import Accordion from "./Accordion";
 
 describe("Accordion Component", () => {
@@ -28,10 +29,33 @@ describe("Accordion Component", () => {
     ReactDOM.unmountComponentAtNode(div);
   });
 
-  it("renders first section active by default", () => {
-    const tree = renderer
-      .create(<Accordion sections={sectionsProp} />)
-      .toJSON();
-    expect(tree).toMatchSnapshot();
+  it("renders empty li when prop isn't supplied", () => {
+    const wrapper = shallow(<Accordion />);
+    expect(toJson(wrapper)).toMatchSnapshot();
+  });
+
+  it("renders no section as active by default", () => {
+    const wrapper = shallow(<Accordion sections={sectionsProp} />);
+    expect(toJson(wrapper)).toMatchSnapshot();
+  });
+  it("opens a clicked section", () => {
+    const wrapper = shallow(<Accordion sections={sectionsProp} />);
+    wrapper
+      .find("button")
+      .at(1)
+      .simulate("click");
+    expect(toJson(wrapper)).toMatchSnapshot();
+  });
+  it("only opens one sections at a time", () => {
+    const wrapper = shallow(<Accordion sections={sectionsProp} />);
+    wrapper
+      .find("button")
+      .at(1)
+      .simulate("click");
+    wrapper
+      .find("button")
+      .at(2)
+      .simulate("click");
+    expect(toJson(wrapper)).toMatchSnapshot();
   });
 });
