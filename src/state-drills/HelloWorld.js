@@ -4,7 +4,6 @@ class HelloWorld extends React.Component {
   constructor(props) {
     super(props);
     this.state = { who: "world" };
-    console.log("constructor");
   }
   handleWorldButton = () => {
     const worldWho = "World!";
