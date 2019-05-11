@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Accordion Component renders first section active by default 1`] = `
+<div>
+  <ul
+    className="Accordion"
+  >
+    <li
+      className="Accordion_item"
+    >
+      <button
+        onClick={[Function]}
+        type="button"
+      >
+        Section 1
+      </button>
+    </li>
+    <li
+      className="Accordion_item"
+    >
+      <button
+        onClick={[Function]}
+        type="button"
+      >
+        Section 2
+      </button>
+    </li>
+    <li
+      className="Accordion_item"
+    >
+      <button
+        onClick={[Function]}
+        type="button"
+      >
+        Section 3
+      </button>
+    </li>
+  </ul>
+</div>
+`;
